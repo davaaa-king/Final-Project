@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Magang</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .sidebar {
+            background-color: #fff;
+            height: 100vh;
+            border-right: 1px solid #ddd;
+            padding: 20px;
+        }
+
+        .sidebar .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+        }
+
+        .sidebar .nav-link.active,
+        .sidebar .nav-link:hover {
+            background-color: #b14cd3;
+            color: white !important;
+            border-radius: 8px;
+        }
+
+        .shortcut-menu a {
+            color: #333 !important;
+            font-weight: 500;
+        }
+
+        .shortcut-menu a:hover {
+            color: #b14cd3 !important;
+            text-decoration: none;
+        }
+
+        .top-bar {
+            background-color: #fff;
+            padding: 10px 30px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-bar .user-info {
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+
+        .header {
+            background: linear-gradient(to right, #9900cc, #e100ff);
+            color: white;
+            border-radius: 0 0 20px 20px;
+            padding: 40px 30px;
+            margin-bottom: 0px;
+        }
+
+        .info-card {
+            border-radius: 12px;
+            color: #1e1e1e;
+            text-align: center;
+            padding: 35px 20px;
+            height: 200px;
+            font-size: 1.15rem;
+        }
+
+        .info-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .top-bar img {
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .content {
+            padding: 20px 30px;
+        }
+
+        .section-title {
+            font-weight: bold;
+            background-color: white;
+            padding: 15px 30px;
+            margin-top: 20px;
+            font-size: 18px;
+            box-shadow: 0 1px 4px rgba(87, 84, 84, 0.1);
+        }
+
+        .card-box {
+            background-color: white;
+            padding: 80px;
+            margin-top: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-box h3 {
+            font-weight: bold;
+            color: gray;
+        }
+
+        .card-box p {
+            font-weight: bold;
+            margin-top: 5px;
+            font-size: 16px;
+        }
+
+        .card-box .number {
+            font-size: 120px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 sidebar">
+                <h5 class="fw-bold mb-4">
+                    <i class="bi bi-stars text-primary me-2"></i>MAGANG
+                </h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a class="nav-link active" href="../dashboard.html"><i
+                                class="bi bi-grid-fill me-2"></i>Dashboard</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link" href="../profile.html"><i class="bi bi-person-circle me-2"></i>Profile</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link" href="../Maps.html"><i class="bi bi-geo-alt-fill me-2"></i>Maps</a>
+                    </li>
+                </ul>
+               <div class="shortcut-menu">
+                    <h6 class="fw-bold mt-4">Shortcut Menu</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="shortcut/ajukan.html" class="text-decoration-none d-block py-1"><i class="bi bi-send me-2"></i>Ajukan
+                                Magang</a></li>
+                        <li><a href="shortcut/unggah.html" class="text-decoration-none d-block py-1"><i
+                                    class="bi bi-upload me-2"></i>Unggah Dokumen</a></li>
+                        <li><a href="shortcut/status.html" class="text-decoration-none d-block py-1"><i
+                                    class="bi bi-check2-circle me-2"></i>Cek Status</a></li>
+                        <li><a href="shortcut/sertifikat.html" class="text-decoration-none d-block py-1"><i
+                                    class="bi bi-printer me-2"></i>Cetak Surat</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-10 ps-md-0">
+                <div class="top-bar">
+                    <img src="data:image/png;base64,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"
+                        class="rounded-circle" width="48" height="48" alt="User" />
+                    <i class="bi bi-bell-fill me-3 fs-5"></i>
+                    <i class="bi bi-gear-fill me-3 fs-5"></i>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVuyd9SQXap5KkDfmGDYX_mj6WuVzGvjH0yw&s"
+                        class="rounded-circle" width="48" height="48" alt="User" />
+                    <div class="user-info">
+                        <strong>Dava Agus Setiawan</strong><br />
+                        <small>Teknik Informatika</small>
+                    </div>
+                </div>
+
+                <div class="header">
+                    <h2>Selamat Datang, Dava!</h2>
+                </div>
+
+
+                <!-- CONTENT -->
+                <div class="content">
+                    <div class="section-title">Total Pengajuan Magang</div>
+
+                    <div class="card-box">
+                        <h3>TOTAL PENGAJUAN MAGANG</h3>
+                        <p>Jumlah Pengajuan</p>
+                        <div class="number">10</div>
+                    </div>
+                </div>
+            </div>
+
+</body>
+
+</html>
