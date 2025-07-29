@@ -2,19 +2,24 @@
 <html lang="id">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Magang</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cek Status</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
     <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
         body {
             background-color: #f5f5f5;
         }
 
         .sidebar {
             background-color: #fff;
-            height: 100vh;
+            height: 105vh;
             border-right: 1px solid #ddd;
             padding: 20px;
         }
@@ -66,62 +71,107 @@
             margin-bottom: 0px;
         }
 
-        .info-card {
-            border-radius: 12px;
-            color: #1e1e1e;
-            text-align: center;
-            padding: 35px 20px;
-            height: 200px;
-            font-size: 1.15rem;
-        }
-
-        .info-icon {
-            font-size: 55px;
-            margin-bottom: 15px;
-        }
-
-        .top-bar img {
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        .content {
-            padding: 20px 30px;
+        .status-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .section-title {
+            font-size: 24px;
             font-weight: bold;
-            background-color: white;
-            padding: 15px 30px;
-            margin-top: 20px;
-            font-size: 18px;
-            box-shadow: 0 1px 4px rgba(87, 84, 84, 0.1);
         }
 
-        .card-box {
-            background-color: white;
-            padding: 80px;
-            margin-top: 20px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-box h3 {
-            font-weight: bold;
+        .section-sub {
+            font-size: 14px;
             color: gray;
+            margin-top: -10px;
+            margin-bottom: 30px;
         }
 
-        .card-box p {
-            font-weight: bold;
-            margin-top: 5px;
-            font-size: 16px;
+        .status-info {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 20px;
         }
 
-        .card-box .number {
-            font-size: 120px;
-            font-weight: bold;
-            margin-top: 20px;
+        .info-box {
+            background-color: white;
+            padding: 25px 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-family: monospace;
+            font-size: 18px;
+        }
+
+        .timeline-container {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            padding: 30px 10px;
+        }
+
+        .timeline-step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+
+        .timeline-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            background-color: #e0e0e0;
+            color: #666;
+        }
+
+        .timeline-step.completed .timeline-icon {
+            background-color: #0dcaf0;
+            color: #fff;
+        }
+
+        .timeline-step.pending .timeline-icon {
+            background-color: #ffc107;
+            color: #fff;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            width: 90%;
+            height: 4px;
+            background: linear-gradient(to right,
+                    #0dcaf0 0%,
+                    #0dcaf0 50%,
+                    #ffc107 50%,
+                    #ffc107 100%);
+            z-index: 1;
+        }
+
+
+        .timeline-text {
+            margin-top: 8px;
+            font-size: 0.85rem;
         }
     </style>
 </head>
@@ -148,14 +198,14 @@
                 <div class="shortcut-menu">
                     <h6 class="fw-bold mt-4">Shortcut Menu</h6>
                     <ul class="list-unstyled">
-                        <li><a href="../shortcut/ajukan.html" class="text-decoration-none d-block py-1"><i
+                        <li><a href="ajukan.html" class="text-decoration-none d-block py-1"><i
                                     class="bi bi-send me-2"></i>Ajukan
                                 Magang</a></li>
-                        <li><a href="../shortcut/unggah.html" class="text-decoration-none d-block py-1"><i
+                        <li><a href="unggah.html" class="text-decoration-none d-block py-1"><i
                                     class="bi bi-upload me-2"></i>Unggah Dokumen</a></li>
-                        <li><a href="../shortcut/status.html" class="text-decoration-none d-block py-1"><i
+                        <li><a href="status.html" class="text-decoration-none d-block py-1"><i
                                     class="bi bi-check2-circle me-2"></i>Cek Status</a></li>
-                        <li><a href="../shortcut/sertifikat.html" class="text-decoration-none d-block py-1"><i
+                        <li><a href="cetak.html" class="text-decoration-none d-block py-1"><i
                                     class="bi bi-printer me-2"></i>Cetak Surat</a></li>
                     </ul>
                 </div>
@@ -176,21 +226,72 @@
                 </div>
 
                 <div class="header">
-                    <h2>Selamat Datang, Dava!</h2>
+                    <h2>Hello, Dava!</h2>
                 </div>
+                <div class="container mt-4">
+                    <h4 style="margin-left: 10px;">Status Pelaksanaan Magang</h4>
+                    <p style="margin-left: 10px; margin-bottom: 20px;">Cek perkembangan kegiatan magang kamu dari awal
+                        hingga selesai</p>
 
+                    <div class="p-4 mb-3" style="background-color: #fff; border-radius: 6px;">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p><strong>Nama</strong></p>
+                                <p><strong>NIM</strong></p>
+                                <p><strong>Program Studi</strong></p>
+                                <p><strong>Instansi</strong></p>
+                                <p><strong>Periode</strong></p>
+                                <p><strong>Dosen Pembimbing</strong></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>: Dava Agus Setiawan</p>
+                                <p>: 24.01.5152</p>
+                                <p>: D3 Teknik Informatika</p>
+                                <p>: PT Telkom Indonesia</p>
+                                <p>: 1 April 2025 – 30 Oktober 2025</p>
+                                <p>: Mr. Ronaldo</p>
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- CONTENT -->
-                <div class="content">
-                    <div class="section-title">Total Pengajuan Magang</div>
-
-                    <div class="card-box">
-                        <h3>TOTAL PENGAJUAN MAGANG</h3>
-                        <p>Jumlah Pengajuan</p>
-                        <div class="number">10</div>
+                    <!-- Timeline Box -->
+                    <div class="p-4" style="background-color: #fff; border-radius: 6px;">
+                        <div class="timeline d-flex justify-content-between align-items-center flex-wrap">
+                            <div class="timeline-step completed">
+                                <div class="timeline-icon"><i class="bi bi-check2-circle"></i></div>
+                                <div class="timeline-text">Pengajuan Disetujui</div>
+                            </div>
+                            <div class="timeline-step completed">
+                                <div class="timeline-icon"><i class="bi bi-play-circle"></i></div>
+                                <div class="timeline-text">Mulai Magang</div>
+                            </div>
+                            <div class="timeline-step completed">
+                                <div class="timeline-icon"><i class="bi bi-calendar-check"></i></div>
+                                <div class="timeline-text">Periode ke-1</div>
+                            </div>
+                            <div class="timeline-step completed">
+                                <div class="timeline-icon"><i class="bi bi-calendar2-week"></i></div>
+                                <div class="timeline-text">Periode ke-2</div>
+                            </div>
+                            <div class="timeline-step pending">
+                                <div class="timeline-icon"><i class="bi bi-person-video3"></i></div>
+                                <div class="timeline-text">Monitoring Dosen</div>
+                            </div>
+                            <div class="timeline-step pending">
+                                <div class="timeline-icon"><i class="bi bi-flag"></i></div>
+                                <div class="timeline-text">Selesai Magang</div>
+                            </div>
+                            <div class="timeline-step pending">
+                                <div class="timeline-icon"><i class="bi bi-upload"></i></div>
+                                <div class="timeline-text">Upload Laporan Akhir</div>
+                            </div>
+                            <div class="timeline-step pending">
+                                <div class="timeline-icon"><i class="bi bi-award"></i></div>
+                                <div class="timeline-text">Nilai Keluar</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
 </body>
 
